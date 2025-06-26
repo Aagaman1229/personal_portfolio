@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Patrick+Hand&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Dancing Script', cursive;
+}
+
+.app .header {
+  width: 100%;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdfaf6;
+}
+
+.logo {
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.logo h1 {
+  font-size: 36px;
+  color: #333;
+  font-weight: bold;
+}
+
+.navbar {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar ul li {
+  list-style: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: #ffe3cb;
+  color: #000;
+  transform: scale(1.05);
+}
+
+.day {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+.moon-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
