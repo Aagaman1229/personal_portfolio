@@ -1,34 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
+/* About Section Wrapper */
 .about {
   min-height: 80vh;
-  padding: 100px 20px;
+  display: flex;
+  margin: auto;
   align-items: center;
   justify-content: center;
-  background-color: #fffdf5;
+  background-color: inherit; /* Follows current theme */
+  padding: 20px;
 }
 
+/* About Section Box */
 .about.section {
   max-width: 700px;
   padding: 40px;
   border: 2px solid #ffd9ba;
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: inherit;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   text-align: center;
+  color: inherit;
 }
 
+/* Heading */
 .about h1 {
   font-size: 40px;
   font-weight: bold;
-  color: #333;
+  color: inherit;
   margin-bottom: 20px;
 }
 
+/* Paragraph */
 .about p {
   font-family: 'Caveat', cursive;
   font-size: 22px;
-  color: #444;
+  color: inherit;
   margin: 12px 0;
   line-height: 1.6;
 }

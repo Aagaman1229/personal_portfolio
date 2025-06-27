@@ -2,9 +2,11 @@ import { Link, Element } from 'react-scroll';
 import Home from './pages/Home';
 import About from './pages/About';
 import './styles/App.css';
-import { FaMoon } from 'react-icons/fa';
+import Theme from './Components/Theme';
+import { useState } from 'react';
 
 function App() {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   return (
     <div className='app'>
       <div className='header'>
@@ -22,7 +24,7 @@ function App() {
         </nav>
 
         <div className='day'>
-          <FaMoon className='moon-icon' />
+          <Theme  theme={theme} setTheme={setTheme}/>
         </div>
       </div>
 

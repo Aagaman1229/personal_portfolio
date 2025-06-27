@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Patrick+Hand&display=swap');
 
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -7,15 +8,59 @@
   font-family: 'Dancing Script', cursive;
 }
 
+/* Light Theme */
+body.light-theme {
+  background-color: #CADCFC; /* soft blue */
+  color: #00246B;            /* dark blue text */
+}
+
+body.light-theme .navbar ul li a {
+  color: #00246B;
+}
+
+body.light-theme .navbar ul li a:hover {
+  background-color: #dbeafe; /* soft sky blue */
+  color: #1e3a8a;            /* deep navy blue */
+}
+
+body.light-theme .icon {
+  color: #00246B;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #00246B; /* deep navy blue */
+  color: #CADCFC;            /* light pastel blue */
+}
+
+body.dark-theme .navbar ul li a {
+  color: #CADCFC;
+}
+
+body.dark-theme .navbar ul li a:hover {
+  background-color: #475569; /* cool dark slate */
+  color: #e0e7ff;            /* very soft bluish-white */
+}
+
+body.dark-theme .icon {
+  color: #CADCFC;
+}
+
+/* Header Layout */
 .app .header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: inherit;
   width: 100%;
   padding: 10px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fdfaf6;
+  background: transparent; /* use theme's background */
 }
 
+/* Logo */
 .logo {
   align-self: flex-start;
   margin-bottom: 10px;
@@ -23,10 +68,11 @@
 
 .logo h1 {
   font-size: 36px;
-  color: #333;
   font-weight: bold;
+  color: inherit;
 }
 
+/* Navigation */
 .navbar {
   width: 80%;
   display: flex;
@@ -46,7 +92,6 @@
 
 .navbar ul li a {
   text-decoration: none;
-  color: #333;
   font-size: 20px;
   font-weight: bold;
   padding: 0px 12px;
@@ -54,20 +99,37 @@
   transition: all 0.3s ease;
 }
 
-.navbar ul li a:hover {
-  background-color: #ffe3cb;
-  color: #000;
-  transform: scale(1.05);
-}
-
+/* Day/Night Toggle */
 .day {
   position: absolute;
   top: 20px;
   right: 40px;
 }
 
-.moon-icon {
+.icon {
   font-size: 24px;
   cursor: pointer;
-  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Section Styling */
+.section {
+  padding: 60px 30px;
+  min-height: 100vh;
+}
+
+.section h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: inherit;
+}
+
+.section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: inherit;
 }
