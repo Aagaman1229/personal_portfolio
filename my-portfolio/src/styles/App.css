@@ -10,40 +10,47 @@
 
 /* Light Theme */
 body.light-theme {
-  background-color: #CADCFC; /* soft blue */
-  color: #00246B;            /* dark blue text */
+  background-color: #F9FAFB; /* soft blue */
+  color: #111827 ;            /* dark blue text */
 }
 
 body.light-theme .navbar ul li a {
-  color: #00246B;
+  color: #111827 ;
 }
 
 body.light-theme .navbar ul li a:hover {
-  background-color: #dbeafe; /* soft sky blue */
-  color: #1e3a8a;            /* deep navy blue */
+  background-color: #F9FAFB; /* soft sky blue */
+  color: #3B82F6   ;            /* deep navy blue */
 }
 
 body.light-theme .icon {
-  color: #00246B;
+  color: #111827 ;
 }
 
 /* Dark Theme */
 body.dark-theme {
-  background-color: #00246B; /* deep navy blue */
-  color: #CADCFC;            /* light pastel blue */
+  background-color: #111827 ; /* deep navy blue */
+  color: #F9FAFB ;            /* light pastel blue */
 }
 
 body.dark-theme .navbar ul li a {
-  color: #CADCFC;
+  color: #F9FAFB ;
 }
 
 body.dark-theme .navbar ul li a:hover {
-  background-color: #475569; /* cool dark slate */
-  color: #e0e7ff;            /* very soft bluish-white */
+  background-color: #111827 ; /* cool dark slate */
+  color: #F9FAFB;            /* very soft bluish-white */
 }
 
 body.dark-theme .icon {
-  color: #CADCFC;
+  color: #F9FAFB;
+}
+body.light-theme {
+  --nav-bg: #F9FAFB;
+}
+
+body.dark-theme {
+  --nav-bg: #111827;
 }
 
 /* Header Layout */
@@ -51,14 +58,16 @@ body.dark-theme .icon {
   position: sticky;
   top: 0;
   z-index: 999;
-  background-color: inherit;
   width: 100%;
   padding: 10px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent; /* use theme's background */
+
+  /* Use solid background per theme */
+  background-color: var(--nav-bg); /* define this in theme */
 }
+
 
 /* Logo */
 .logo {

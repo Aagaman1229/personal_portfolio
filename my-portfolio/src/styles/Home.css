@@ -1,43 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+/* Home.css */
 
-/* Home Section */
-.home {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: inherit; /* Follows theme */
-  padding: 20px;
+/* Container for the whole section */
+body.light-theme {
+  --background-color: #f9fafb;
+  --text-color: #111827;
 }
 
-/* Content Box */
-.home-content {
-  justify-content: center;
-  margin: auto;
+body.dark-theme {
+  --background-color: #111827;
+  --text-color: #f9fafb;
+}
+.home {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  max-width: 700px;
-  padding: 40px;
-  border: 2px solid #ffdfb0;
-  border-radius: 16px;
-  background-color: inherit;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  padding: 60px 20px;
+  min-height: 100vh;
+  background-color: var(--background-color, #f9fafb);
+  transition: background-color 0.3s ease;
+}
+
+/* Image wrapper */
+.myimage {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Wrapper that holds the border */
+.image-border {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image scales inside the border */
+.myimagemain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Only image scales, not the border */
+.image-border:hover .myimagemain {
+  transform: scale(1.05);
+}
+
+
+/* Text content section */
+.home-content {
+  max-width: 600px;
   text-align: center;
-  color: inherit;
+  color: var(--text-color, #111827);
+  padding: 0 20px;
 }
 
 /* Heading */
-.home h1 {
-  font-size: 42px;
-  font-weight: bold;
-  color: inherit;
+.home-content h1 {
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  font: 'caveat', cursive;
+  font-weight: bold;
 }
 
-/* Paragraph */
-.home p {
-  font-family: 'Caveat', cursive;
-  font-size: 22px;
-  color: inherit;
-  margin: 10px 0;
+
+/* Paragraphs */
+.home-content p {
+  font-size: 1.1rem;
+  font: 'caveat', cursive;
   line-height: 1.6;
+  margin-bottom: 12px;
 }

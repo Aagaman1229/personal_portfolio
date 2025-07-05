@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/Home.css';
+import myimage from '../assets/mypicture.jpg'; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,11 @@ function Home() {
 
   return (
     <div className="home" ref={homeRef}>
+      <div className="myimage">
+        <div className="image-border">
+          <img src={myimage} alt="profile" className="myimagemain" />
+        </div>
+      </div>
       <div className="home-content">
         <h1>Welcome to My Portfolio</h1>
         <p>This is the home page of my portfolio website.</p>

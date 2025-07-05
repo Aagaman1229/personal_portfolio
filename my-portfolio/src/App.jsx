@@ -1,6 +1,7 @@
 import { Link, Element } from 'react-scroll';
 import Home from './pages/Home';
 import About from './pages/About';
+import Skill from './pages/Skill';
 import './styles/App.css';
 import Theme from './Components/Theme';
 import { useState } from 'react';
@@ -18,6 +19,7 @@ function App() {
           <ul>
             <li><Link to="home" smooth={true} duration={500}>Home</Link></li>
             <li><Link to="about" smooth={true} duration={500}>About</Link></li>
+            <li><Link to="skill" smooth={true} duration={500}>Skill</Link></li>
             <li><Link to="projects" smooth={true} duration={500}>Projects</Link></li>
             <li><Link to="contact" smooth={true} duration={500}>Contact</Link></li>
           </ul>
@@ -31,6 +33,7 @@ function App() {
       {/* Sections as scrollable Elements */}
       <Element name="home"><Home /></Element>
       <Element name="about"><About /></Element>
+      <Element name="skill"><Skill /></Element>
       <Element name="projects">
         <section className="section">
           <h1>Projects</h1>
