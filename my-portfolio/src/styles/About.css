@@ -1,41 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
-/* About Section Wrapper */
-.about {
-  min-height: 80vh;
-  display: flex;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  background-color: inherit; /* Follows current theme */
-  padding: 20px;
+body.light-theme {
+  --about-bg: #f9fafb;
+  --about-text: #111827;
 }
 
-/* About Section Box */
+body.dark-theme {
+  --about-bg: #111827;
+  --about-text: #f9fafb;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background-color: var(--about-bg);
+  transition: background-color 0.3s ease;
+  min-height: 100vh;
+}
+
 .about.section {
   max-width: 700px;
-  padding: 40px;
-  border: 2px solid #ffd9ba;
-  border-radius: 16px;
-  background-color: inherit;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   text-align: center;
-  color: inherit;
+  padding: 40px;
+  color: var(--about-text);
+  transition: color 0.3s ease;
 }
 
 /* Heading */
-.about h1 {
-  font-size: 40px;
-  font-weight: bold;
-  color: inherit;
+.about.section h1 {
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: var(--about-text);
 }
 
-/* Paragraph */
-.about p {
+/* Paragraphs */
+.about.section p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
   font-family: 'Caveat', cursive;
-  font-size: 22px;
-  color: inherit;
-  margin: 12px 0;
-  line-height: 1.6;
+  color: var(--about-text);
 }

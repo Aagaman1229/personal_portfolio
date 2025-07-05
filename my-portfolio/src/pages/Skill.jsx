@@ -1,38 +1,94 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaPython, FaReact, FaHtml5, FaCss3 } from 'react-icons/fa';
+import '../styles/Skill.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Skill() {
-  const skillRef = useRef(null);
+const skills = [
+  { name: 'Python', icon: <FaPython />, color: '#306998', pct: 80 },
+  { name: 'React',  icon: <FaReact  />, color: '#61dafb', pct: 90 },
+  { name: 'HTML5',  icon: <FaHtml5  />, color: '#e44d26', pct: 75 },
+  { name: 'CSS3',   icon: <FaCss3   />, color: '#2965f1', pct: 85 },
+];
+
+export default function Skill() {
+  const sectionRef = useRef(null);
+  const titleRef   = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.about.section', {
-        scale: 0.8,
+      // Title fade+slide in
+      gsap.from(titleRef.current, {
         opacity: 0,
-        duration: 1.5,
-        ease: 'back.out(1.7)', // spring-like effect
+        y: 50,
+        duration: 1,
+        ease: 'power3.out',
         scrollTrigger: {
-          trigger: skillRef.current,
+          trigger: titleRef.current,
           start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
+          toggleActions: 'play none none none'
+        }
       });
-    }, skillRef);
+
+      // Stagger each skill-item appearance
+      gsap.from('.skill-item', {
+        opacity: 0,
+        y: 30,
+        scale: 0.9,
+        stagger: 0.2,
+        duration: 1,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      // Animate each progress bar individually
+      gsap.utils.toArray('.skill-item').forEach((item) => {
+        const bar = item.querySelector('.skill-progress-bar');
+        const pct = bar.dataset.pct;
+        gsap.fromTo(bar,
+          { width: 0 },
+          {
+            width: pct + '%',
+            duration: 1.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="about" ref={skillRef}>
-      <div className="skill section">
-        <h1>Skill</h1>
-        <p>As a web developer, I have a diverse skill set that includes:</p>
-      </div>
-    </div>
+    <section className="skill section" ref={sectionRef}>
+      <h1 ref={titleRef}>My Skills</h1>
+      {skills.map((s) => (
+        <div className="skill-item" key={s.name}>
+          <div className="skill-icon" style={{ color: s.color }}>
+            {s.icon}
+          </div>
+          <div className="skill-name">{s.name}</div>
+          <div className="skill-progress-container">
+            <div
+              className="skill-progress-bar"
+              style={{ backgroundColor: s.color }}
+              data-pct={s.pct}
+            />
+            <div className="skill-percentage">{s.pct}%</div>
+          </div>
+        </div>
+      ))}
+    </section>
   );
 }
-
-export default Skill;

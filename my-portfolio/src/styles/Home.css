@@ -2,14 +2,15 @@
 /* Home.css */
 
 /* Container for the whole section */
+
 body.light-theme {
-  --background-color: #f9fafb;
-  --text-color: #111827;
+  --home-bg: #f9fafb;
+  --home-text: #111827;
 }
 
 body.dark-theme {
-  --background-color: #111827;
-  --text-color: #f9fafb;
+  --home-bg: #111827;
+  --home-text: #f9fafb;
 }
 .home {
   display: flex;
@@ -17,8 +18,8 @@ body.dark-theme {
   align-items: center;
   padding: 60px 20px;
   min-height: 100vh;
-  background-color: var(--background-color, #f9fafb);
-  transition: background-color 0.3s ease;
+  background-color: var(--home-bg, #f9fafb);
+  transition: --home-bg 0.3s ease;
 }
 
 /* Image wrapper */
@@ -35,7 +36,6 @@ body.dark-theme {
   height: 180px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +59,7 @@ body.dark-theme {
 .home-content {
   max-width: 600px;
   text-align: center;
-  color: var(--text-color, #111827);
+  color: var(--home-text, #111827);
   padding: 0 20px;
 }
 
