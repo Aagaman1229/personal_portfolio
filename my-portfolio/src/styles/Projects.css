@@ -1,0 +1,94 @@
+.projects-section {
+  padding: 4rem 2rem;
+  background-color: #f8f8f8;
+  position: relative;
+}
+
+.projects-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.projects-scroll-wrapper {
+  overflow-x: auto;
+  cursor: grab;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-scroll-wrapper:active {
+  cursor: grabbing;
+}
+
+
+
+.projects-row {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.popup-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.popup-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.popup-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.popup-content button {
+  padding: 0.5rem 1rem;
+  background: #2965f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background: #1746c5;
+}
