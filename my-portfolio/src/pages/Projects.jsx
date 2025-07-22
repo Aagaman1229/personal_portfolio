@@ -1,102 +1,87 @@
-// Projects.jsx
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ProjectBox from '../components/ProjectBox';
 import '../styles/Projects.css';
+import facerecog from '../assets/projects/facerecog.png'; 
+import psyberly from '../assets/projects/psyberly.png';
+import webapp from '../assets/projects/Webapp.png';
+
 
 const projects = [
   {
-    image: '../assets/projects/p1.png',
-    title: 'AI Assistant',
+    image: facerecog,
+    title: 'Face-recognition system',
     description: 'Voice-based assistant using Python and NLP.',
   },
   {
-    image: '../assets/projects/p2.png',
-    title: 'Portfolio Website',
+    image: psyberly,
+    title: 'Psyberly Website',
     description: 'Built with React and CSS animations.',
   },
   {
-    image: '../assets/projects/p3.png',
-    title: 'Weather App',
+    image: webapp,
+    title: 'Note App',
     description: 'Weather updates using OpenWeather API.',
   },
-  // Repeat or add more...
+  // Add more projects as needed
 ];
 
 function Projects() {
   const rowRef = useRef(null);
   const wrapperRef = useRef(null);
   const [activeProject, setActiveProject] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
   const gsapAnimation = useRef(null);
 
-  // Start GSAP auto-scroll
+  // Create seamless infinite loop
   useEffect(() => {
     const row = rowRef.current;
+    if (!row) return;
+
+    // Calculate total width needed
+    const itemWidth = 300; // Adjust to match your project box width
+    const gap = 30; // Adjust to match your gap between items
+    const totalWidth = (itemWidth + gap) * projects.length;
+
+    // Double the projects array for seamless looping
+    const duplicatedProjects = [...projects, ...projects];
+
+    // Start the animation
     gsapAnimation.current = gsap.to(row, {
-      x: () => `-=${row.scrollWidth / 2}`,
-      duration: 40,
-      ease: 'linear',
+      x: -totalWidth,
+      duration: 20,
+      ease: "none",
       repeat: -1,
       modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % row.scrollWidth)
+        x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
       }
     });
 
-    return () => {
-      if (gsapAnimation.current) gsapAnimation.current.kill();
-    };
-  }, []);
-
-  // Enable drag-to-scroll
-  useEffect(() => {
+    // Pause animation on hover
     const wrapper = wrapperRef.current;
-
-    const handleMouseDown = (e) => {
-      setIsDragging(true);
-      setStartX(e.pageX - wrapper.offsetLeft);
-      setScrollLeft(wrapper.scrollLeft);
-
+    const handleMouseEnter = () => {
       if (gsapAnimation.current) gsapAnimation.current.pause();
     };
-
-    const handleMouseMove = (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - wrapper.offsetLeft;
-      const walk = x - startX;
-      wrapper.scrollLeft = scrollLeft - walk;
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-      if (gsapAnimation.current) gsapAnimation.current.resume();
-    };
-
     const handleMouseLeave = () => {
-      setIsDragging(false);
       if (gsapAnimation.current) gsapAnimation.current.resume();
     };
 
-    wrapper.addEventListener('mousedown', handleMouseDown);
-    wrapper.addEventListener('mousemove', handleMouseMove);
-    wrapper.addEventListener('mouseup', handleMouseUp);
+    wrapper.addEventListener('mouseenter', handleMouseEnter);
     wrapper.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      wrapper.removeEventListener('mousedown', handleMouseDown);
-      wrapper.removeEventListener('mousemove', handleMouseMove);
-      wrapper.removeEventListener('mouseup', handleMouseUp);
+      if (gsapAnimation.current) gsapAnimation.current.kill();
+      wrapper.removeEventListener('mouseenter', handleMouseEnter);
       wrapper.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isDragging, startX, scrollLeft]);
+  }, []);
 
   return (
     <section className="projects-section">
       <h1 className="projects-title">My Projects</h1>
-      <div className="projects-scroll-wrapper" ref={wrapperRef}>
+      <div 
+        className="projects-scroll-wrapper" 
+        ref={wrapperRef}
+      >
         <div className="projects-row" ref={rowRef}>
           {[...projects, ...projects].map((project, i) => (
             <ProjectBox
